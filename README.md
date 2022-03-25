@@ -9,6 +9,7 @@
 需要更改数据库配置以及utils工具类中的地址
 
 A visual hexo background management web program based on SSM framework
+
 First attempt for beginners
 
 The web style is layui
