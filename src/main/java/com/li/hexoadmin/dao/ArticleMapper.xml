@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.li.hexoadmin.dao.ArticleMapper">
+        <insert id="addArticle" parameterType="Article">
+            insert into hexoadmin.article(articleID,articleTitle,articleBody,articleTime,articleTip,articleTag,uuid)
+            values (#{articleID},#{articleTitle},#{articleBody},#{articleTime},#{articleTip},#{articleTag},#{uuid});
+        </insert>
+        <delete id="deleteArticleByID" parameterType="_int">
+            delete from hexoadmin.article where articleID=#{articleID};
+        </delete>
+        <update id="updateArticle" parameterType="Article">
+            update hexoadmin.article
+            set articleTitle =#{articleTitle},articleBody=#{articleBody},articleTime=#{articleTime},articleTip=#{articleTip},articleTag=#{articleTag}
+            where uuid=#{uuid};
+        </update>
+        <select id="queryArticleByID" parameterType="_int" resultType="Article">
+            select * from hexoadmin.article
+            where articleID=#{articleID};
+        </select>
+        <select id="queryArticleByTitle" parameterType="String" resultType="Article">
+            select * from hexoadmin.article
+            where articleTitle like concat('%', #{articleTitle}, '%');
+        </select>
+        <select id="queryAllArticle" resultType="Article">
+            select * from hexoadmin.article;
+        </select>
+</mapper>
